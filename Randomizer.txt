@@ -1,0 +1,30 @@
+import random
+
+# Define tuples of meals for each category
+breakfast_meals = ("Bacon and Eggs", "Pancakes", "Omelette", "Cereal", "Yogurt")
+lunch_meals = ("Menudo", "Pork Sinigang", "Adobo", "Chicken Tinola", "Beef Caldereta")
+dinner_meals = ("Fried Chicken", "Sweet and Sour Fish", "Spaghetti", "Grilled Steak", "Taco")
+
+# Function to randomly select a meal from each category
+def select_meals(breakfast_meals, lunch_meals, dinner_meals):
+    breakfast = random.choice(breakfast_meals)
+    lunch = random.choice(lunch_meals)
+    dinner = random.choice(dinner_meals)
+    return breakfast, lunch, dinner
+
+# Ensure there are no repeated meals in a day
+def select_non_repeated_meals():
+    while True:
+        breakfast, lunch, dinner = select_meals(breakfast_meals, lunch_meals, dinner_meals)
+        if breakfast != lunch and breakfast != dinner and lunch != dinner:
+            return breakfast, lunch, dinner
+
+# Main loop to generate and print the daily meals
+while True:
+    daily_breakfast, daily_lunch, daily_dinner = select_non_repeated_meals()
+    print("Breakfast – " + daily_breakfast)
+    print("Lunch – " + daily_lunch)
+    print("Dinner – " + daily_dinner)
+    again = input("Again? (Y/N): ")
+    if again.lower() != 'y':
+        break
